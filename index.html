@@ -111,27 +111,27 @@
                         <b class="lead">The node findMarkerBundles takes the following command line parameters:</b> <br>
                     </p>
                     <p class="card-text">
-                        Same definition as on individual tags<br>
+
                         <code>marker_size</code>
                     </p>
                     <p class="card-text">
-                        Same definition as on individual tags<br>
+
                         <code>max_new_marker_error</code>
                     </p>
                     <p class="card-text">
-                        Same definition as on individual tags<br>
+
                         <code>max_track_error</code>
                     </p>
                     <p class="card-text">
-                        Same definition as on individual tags<br>
+
                         <code>camera_image</code>
                     </p>
                     <p class="card-text">
-                        Same definition as on individual tags<br>
+
                         <code>camera_info</code>
                     </p>
                     <p class="card-text">
-                        Same definition as on individual tags<br>
+
                         <code>output_frame</code>
                     </p>
                     <p class="card-text">
@@ -144,11 +144,8 @@
 
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-3">
-
-            <div class="card bg-light mb-5 mb-lg-0">
+            <div class="card bg-light mb-5 mb-lg-0 mt-3">
                 <div class="card-header">ROS API</div>
                 <div class="card-body">
                     <h5 class="card-title">Subscribed topic</h5>
@@ -161,6 +158,14 @@
                         <code>(sensor_msgs/Image)
                         </code>Image to be analyzed for markers.
                     </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card bg-light mb-5 mb-lg-0">
+                <div class="card-header">ROS API</div>
+                <div class="card-body">
                     <h5 class="card-title">API for individual markers</h5>
                     <p class="card-text">
                         <code>visualization_marker (visualization_msgs/Marker)</code>An rviz message. When
@@ -177,6 +182,11 @@
                         from
                         the camera frame to each AR tag frame, named ar_marker_x, where x is the ID number of the tag.
                     </p>
+                </div>
+            </div>
+            <div class="card bg-light mb-5 mt-3 mb-lg-0">
+                <div class="card-header">ROS API</div>
+                <div class="card-body">
                     <h5 class="card-title">API for detecting multiple markers</h5>
                     <p class="card-text">
                         <code>visualization_marker</code> Display a red square block at the location of identified
