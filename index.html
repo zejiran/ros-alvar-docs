@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ar_track_alvar</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href='favicon.ico' rel='shortcut icon' type='image/x-icon'/>
+</head>
+<body>
+<div class="container-fluid mt-5 text-center">
+    <h1 class="display-1">ar_track_alvar</h1>
+    <h1 class="display-4"><small class="text-muted">This package is a ROS wrapper for Alvar, an open source AR tag
+        tracking library.</small></h1>
+    <img alt="artags" class="img-fluid" src="artags.png">
+    <div class="row">
+
+        <a href="http://wiki.ros.org/ar_track_alvar">
+            <button class="btn btn-dark mb-5 mt-3" type="button">
+                Source documentation
+            </button>
+        </a>
+
+        <div class="col-lg-3">
+            <div class="card bg-light mb-5 mb-lg-0">
+                <div class="card-header">Functionalities</div>
+                <div class="card-body">
+                    <h5 class="card-title">Generating AR tags.</h5>
+                    <p class="card-text">Generating AR tags of varying size, resolution, and data/ID encoding.</p>
+                    <h5 class="card-title">Track individual AR tags.</h5>
+                    <p class="card-text">Identifying and tracking the pose of individual AR tags, optionally integrating
+                        kinect
+                        depth data (when a kinect is available) for better pose estimates.</p>
+                    <h5 class="card-title">Track multiple AR tags.</h5>
+                    <p class="card-text">Identifying and tracking the pose of "bundles" consisting of multiple tags.
+                        This allows for more stable pose estimates, robustness to occlusions, and tracking of
+                        multi-sided objects.</p>
+                    <h5 class="card-title">NOT WORKING.</h5>
+                    <p class="card-text">Using camera images to automatically calculate spatial relationships between
+                        tags in a bundle.</p>
+                </div>
+            </div>
+            <div class="card bg-light mb-5 mt-4 mb-lg-0">
+                <div class="card-header">Important commands</div>
+                <div class="card-body">
+                    <h5 class="card-title">Installation</h5>
+                    <p class="card-text">
+                        <code>$ sudo apt-get install ros-indigo-ar-track-alvar</code>
+                    </p>
+                    <h5 class="card-title">Generating AR tags</h5>
+                    <p class="card-text">
+                        <code>rosrun ar_track_alvar createMarker</code>
+                        <br>Instructions will appear describing the various options.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card bg-light mb-5 mb-lg-0">
+                <div class="card-header">Usecase</div>
+                <div class="card-body">
+
+                    <h5 class="card-title">Detecting individual tags</h5>
+
+                    <p class="card-text">
+                        <b class="lead">The node individualMarkers takes the following command line arguments:</b> <br>
+                    </p>
+                    <p class="card-text">
+                        The width in centimeters of one side of the black square marker border <br>
+                        <code>marker_size</code>
+                    </p>
+                    <p class="card-text">
+                        A threshold determining when new markers can be detected under uncertainty <br>
+                        <code>max_new_marker_error</code>
+                    </p>
+                    <p class="card-text">
+                        A threshold determining how much tracking error can be observed before an tag is considered
+                        to have disappeared <br>
+                        <code>max_track_error</code>
+                    </p>
+                    <p class="card-text">
+                        The name of the topic that provides camera frames for detecting the AR tags. This can be mono or
+                        color, but should be an UNrectified image, since rectification takes place in this package <br>
+                        <code>camera_image</code>
+                    </p>
+                    <p class="card-text">
+                        The name of the topic that provides the camera calibration parameters so that the image can be
+                        rectified <br>
+                        <code>camera_info</code>
+                    </p>
+                    <p class="card-text">
+                        The name of the frame that the published Cartesian locations of the AR tags will be relative
+                        to<br>
+                        <code>output_frame</code>
+                    </p>
+
+                    <p class="card-text">* If you are not using a kinect or do not desire to use depth
+                        data improvements, use individualMarkersNoKinect instead.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card bg-light mb-5 mb-lg-0">
+                <div class="card-header">Usecase</div>
+                <div class="card-body">
+
+                    <h5 class="card-title">Detecting multi-tag bundles</h5>
+                    <p class="card-text">
+                        <b class="lead">The node findMarkerBundles takes the following command line parameters:</b> <br>
+                    </p>
+                    <p class="card-text">
+                        Same definition as on individual tags<br>
+                        <code>marker_size</code>
+                    </p>
+                    <p class="card-text">
+                        Same definition as on individual tags<br>
+                        <code>max_new_marker_error</code>
+                    </p>
+                    <p class="card-text">
+                        Same definition as on individual tags<br>
+                        <code>max_track_error</code>
+                    </p>
+                    <p class="card-text">
+                        Same definition as on individual tags<br>
+                        <code>camera_image</code>
+                    </p>
+                    <p class="card-text">
+                        Same definition as on individual tags<br>
+                        <code>camera_info</code>
+                    </p>
+                    <p class="card-text">
+                        Same definition as on individual tags<br>
+                        <code>output_frame</code>
+                    </p>
+                    <p class="card-text">
+                        A list of XML file names, one for each bundle you wish to detect.<br>
+                        <code>bundle_files</code>
+                    </p>
+
+                    <p class="card-text">* If you are not using a kinect or do not desire to use depth data
+                        improvements, use findMarkerBundlesNoKinect instead.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="card bg-light mb-5 mb-lg-0">
+                <div class="card-header">ROS API</div>
+                <div class="card-body">
+                    <h5 class="card-title">Subscribed topic</h5>
+                    <p class="card-text">
+                        <code> /kinect_head/rgb/camera_info (sensor_msgs/CameraInfo)
+
+                        </code> Camera needs calibrated before this topic to become available.
+                    </p>
+                    <p class="card-text">
+                        <code>(sensor_msgs/Image)
+                        </code>Image to be analyzed for markers.
+                    </p>
+                    <h5 class="card-title">API for individual markers</h5>
+                    <p class="card-text">
+                        <code>visualization_marker (visualization_msgs/Marker)</code>An rviz message. When
+                        subscribed to, displays colored square blocks at the location of identified AR tags. Also
+                        overlay these
+                        blocks in a camera image.
+                    </p>
+                    <p class="card-text">
+                        <code>ar_pose_marker (ar_track_alvar/AlvarMarkers)</code>A list of the poses of all the
+                        observed AR tags, with respect to the output frame.
+                    </p>
+                    <p class="card-text">
+                        <code>Camera frame (from Camera info topic param) → AR tag frame</code> Provides a transform
+                        from
+                        the camera frame to each AR tag frame, named ar_marker_x, where x is the ID number of the tag.
+                    </p>
+                    <h5 class="card-title">API for detecting multiple markers</h5>
+                    <p class="card-text">
+                        <code>visualization_marker</code> Display a red square block at the location of identified
+                        "master" AR tags (one per bundle), green square block at the location of other
+                        tags, and also overlay these blocks in a camera image.
+                    </p>
+                    <p class="card-text">
+                        <code>ar_pose_marker</code> List of the poses of all the
+                        observed "master" AR tags (one per bundle), with respect to the output frame.
+                    </p>
+                    <p class="card-text">
+                        <code>Camera frame</code> Transform from
+                        the camera frame to "master" AR tag frames, named ar_marker_x, where x is the ID number of
+                        the tag.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container-fluid mt-5 mb-5">
+        <svg aria-label="code" class="octicon octicon-code v-align-middle fill-gray mr-1" height="20" role="img"
+             version="1.1" viewBox="0 0 14 16" width="17">
+            <path d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path>
+        </svg>
+        with
+        <svg aria-label="love" class="octicon octicon-heart v-align-middle fill-gray mx-1" height="20" role="img"
+             version="1.1" viewBox="0 0 12 16" width="15">
+            <path d="M11.2 3c-.52-.63-1.25-.95-2.2-1-.97 0-1.69.42-2.2 1-.51.58-.78.92-.8 1-.02-.08-.28-.42-.8-1-.52-.58-1.17-1-2.2-1-.95.05-1.69.38-2.2 1-.52.61-.78 1.28-.8 2 0 .52.09 1.52.67 2.67C1.25 8.82 3.01 10.61 6 13c2.98-2.39 4.77-4.17 5.34-5.33C11.91 6.51 12 5.5 12 5c-.02-.72-.28-1.39-.8-2.02V3z"></path>
+        </svg>
+        made in Colombia
+    </div>
+</div>
+
+</body>
+</html>
